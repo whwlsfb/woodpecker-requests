@@ -138,6 +138,25 @@ class URLConnectionExecutor implements HttpExecutor {
         conn.setConnectTimeout(request.connectTimeout());
         // Url connection did not deal with cookie when handle redirect. Disable it and handle it manually
         conn.setInstanceFollowRedirects(false);
+
+        // Host:
+        if (!request.userAgent().isEmpty()) {
+            conn.setRequestProperty(NAME_HOST, request.url().getAuthority());
+        }
+
+        // UserAgent:
+        if (!request.userAgent().isEmpty()) {
+            conn.setRequestProperty(NAME_USER_AGENT, request.userAgent());
+        }
+
+        if (request.acceptCompress()) {
+            conn.setRequestProperty(NAME_ACCEPT_ENCODING, "gzip, deflate");
+        }
+
+        if (request.basicAuth() != null) {
+            conn.setRequestProperty(NAME_AUTHORIZATION, request.basicAuth().encode());
+        }
+
         if (body != null) {
             conn.setDoOutput(true);
             String contentType = body.contentType();
@@ -147,18 +166,6 @@ class URLConnectionExecutor implements HttpExecutor {
                 }
                 conn.setRequestProperty(NAME_CONTENT_TYPE, contentType);
             }
-        }
-
-        // headers
-        if (!request.userAgent().isEmpty()) {
-            conn.setRequestProperty(NAME_USER_AGENT, request.userAgent());
-        }
-        if (request.acceptCompress()) {
-            conn.setRequestProperty(NAME_ACCEPT_ENCODING, "gzip, deflate");
-        }
-
-        if (request.basicAuth() != null) {
-            conn.setRequestProperty(NAME_AUTHORIZATION, request.basicAuth().encode());
         }
 
         // set cookies
