@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <img title="portainer" src='https://img.shields.io/badge/version-0.1.0.beta1-brightgreen.svg' />
+  <img title="portainer" src='https://img.shields.io/badge/version-0.2.2-brightgreen.svg' />
   <img title="portainer" src='https://img.shields.io/badge/java-1.8.*-yellow.svg' />
   <img title="portainer" src='https://img.shields.io/badge/license-MIT-red.svg' />
 </p>
