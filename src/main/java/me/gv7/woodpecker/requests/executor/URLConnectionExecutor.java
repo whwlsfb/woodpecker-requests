@@ -113,7 +113,7 @@ class URLConnectionExecutor implements HttpExecutor {
         }
 
         // disable cache
-        conn.setUseCaches(false);
+        // conn.setUseCaches(false);
 
         // deal with https
         if (conn instanceof HttpsURLConnection) {
@@ -167,7 +167,6 @@ class URLConnectionExecutor implements HttpExecutor {
                 conn.setRequestProperty(NAME_CONTENT_TYPE, contentType);
             }
         }
-
         // set cookies
         Collection<Cookie> sessionCookies = cookieJar.getCookies(url);
         if (!request.cookies().isEmpty() || !sessionCookies.isEmpty()) {
