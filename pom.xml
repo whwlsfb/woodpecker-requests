@@ -7,7 +7,7 @@
     <groupId>me.gv7.woodpecker</groupId>
     <artifactId>woodpecker-requests</artifactId>
     <packaging>jar</packaging>
-    <version>0.2.2</version>
+    <version>0.3.0</version>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -64,6 +64,12 @@
             <artifactId>jetty-servlet</artifactId>
             <version>9.3.13.v20161014</version>
             <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents.client5/httpclient5 -->
+        <dependency>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
+            <version>5.5</version>
         </dependency>
     </dependencies>
 
