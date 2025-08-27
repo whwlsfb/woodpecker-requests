@@ -198,6 +198,11 @@ class URLConnectionExecutor implements HttpExecutor {
                 httpClientBuilder.setUserAgent(ua.getValue());
             }
             CloseableHttpClient httpClient = httpClientBuilder.build();
+            SecurityManager security = System.getSecurityManager();
+            if (security != null) {
+                    security.checkConnect(request.url().getHost(),
+                            request.url().getPort());
+            }
             return readResponse(httpClient, httpClient.execute(req), url, cookieJar, request.method());
         } catch (URISyntaxException | IOException e) {
             throw new RequestsException(e);
