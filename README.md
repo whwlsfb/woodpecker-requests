@@ -20,19 +20,19 @@ Table of Contents
 
 * [Maven Setting](#maven-setting)
 * [Usage](#usage)
-    * [Simple Case](#simple-case)
-    * [Charset](#charset)
-    * [Passing Parameters](#passing-parameters)
-    * [Set Headers](#set-headers)
-    * [Cookies](#cookies)
-    * [Request with data](#request-with-data)
-    * [Json support](#json-support)
-    * [Basic Auth](#basic-auth)
-    * [Redirection](#redirection)
-    * [Timeout](#timeout)
-    * [Response compress](#response-compress-encoding)
-    * [Https Verification](#https-verification)
-    * [Proxy](#proxy)
+  * [Simple Case](#simple-case)
+  * [Charset](#charset)
+  * [Passing Parameters](#passing-parameters)
+  * [Set Headers](#set-headers)
+  * [Cookies](#cookies)
+  * [Request with data](#request-with-data)
+  * [Json support](#json-support)
+  * [Basic Auth](#basic-auth)
+  * [Redirection](#redirection)
+  * [Timeout](#timeout)
+  * [Response compress](#response-compress-encoding)
+  * [Https Verification](#https-verification)
+  * [Proxy](#proxy)
 * [Session](#session)
 
 # Maven Setting
@@ -141,7 +141,7 @@ byte[] resp1 = Requests.get(url).send().readToBytes();
 boolean result = Requests.get(url).send().writeToFile("/path/to/save/file");
 ```
 
-## Charset
+## Charset 
 
 Requests default use UTF-8 to encode parameters, post forms or request string body, you can set other charset by:
 
@@ -156,7 +156,7 @@ You can force use specified charset by:
 String resp = Requests.get(url).send().charset(StandardCharsets.ISO_8859_1).readToText();
 ```
 
-## Passing Parameters
+## Passing Parameters 
 
 Pass parameters in urls using params method:
 
@@ -203,7 +203,7 @@ String resp = Requests.get(url)
         .send().readToText();
 ```
 
-## Cookies
+## Cookies 
 
 Cookies can be add by:
 
@@ -219,7 +219,7 @@ String resp = Requests.get(url)
         .send().readToText();
 ```
 
-## Request with data
+## Request with data 
 
 Http Post, Put, Patch method can send request body. Take Post for example:
 
@@ -243,7 +243,7 @@ InputStreamSupplier supplier = ...;
 resp = Requests.post(url).body(supplier).send().readToText();
 ```
 
-One more complicate situation is multiPart post request, this can be done via multiPart method,
+One more complicate situation is multiPart post request, this can be done via multiPart method, 
 one simplified multi part request example which send files and param data:
 
 ```java
@@ -285,7 +285,7 @@ JsonLookup.getInstance().register(jsonProcessor);
 
 ```
 
-## Basic Auth
+## Basic Auth 
 
 Set http basic auth param by auth method:
 
@@ -293,7 +293,7 @@ Set http basic auth param by auth method:
 String resp = Requests.get(url).basicAuth("user", "passwd").send().readToText();
 ```
 
-## Redirection
+## Redirection 
 
 Requests will handle 30x http redirect automatically, you can disable it by:
 
@@ -320,16 +320,16 @@ String resp = Requests.get(url).acceptCompress(false).send().readToText();
 String resp2 = Requests.get(url).send().decompress(false).readToText();
 ```
 
-## Https Verification
+## Https Verification 
 
-Some https sites do not have trusted http certificate, Exception will be thrown when request.
+Some https sites do not have trusted http certificate, Exception will be thrown when request. 
 You can disable https certificate verify by:
 
 ```java
 Requests.get(url).verify(false).send();
 ```
 
-## Proxy
+## Proxy 
 
 Set proxy by proxy method:
 
@@ -340,7 +340,7 @@ Requests.get(url).proxy(Proxies.socksProxy("127.0.0.1", 1080)).send(); // socks 
 
 # Session
 
-Session maintains cookies, basic auth and maybe other http context for you, useful when need login or other situations.
+Session maintains cookies, basic auth and maybe other http context for you, useful when need login or other situations. 
 Session have the same usage as Requests.
 
 ```java
